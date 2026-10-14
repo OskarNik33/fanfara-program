@@ -1,0 +1,28 @@
+{
+  "speakers": [
+    {
+      "name": "Mira Voss",
+      "role": "Opening Keynote — The Shape of Tomorrow",
+      "bio": "Mira spent a decade building systems that never shipped before founding a lab that only ships.",
+      "portrait": "portraits/mira-voss.jpg",
+      "c1": "#DE9000",
+      "c2": "#C62000"
+    },
+    {
+      "name": "Denis Okafor",
+      "role": "Systems Thinking for Chaotic Markets",
+      "bio": "Denis models supply chains for a living and breaks them for fun.",
+      "portrait": "portraits/denis-okafor.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "Yuki Tanabe",
+      "role": "Designing Trust into Machines",
+      "bio": "Yuki argues the best interface is the one that tells you when to stop trusting it.",
+      "portrait": "portraits/yuki-tanabe.jpg",
+      "c1": "#C62000",
+      "c2": "#242925"
+    }
+  ]
+}
