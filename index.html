@@ -6,8 +6,8 @@
 <title>Program — Fanfara</title>
 <style>
   :root{
-    --mayo:#EDEAD9; --concrete:#1A1B1B; --concrete2:#242925;
-    --zenf:#DE9000; --ketchup:#C62000; --teal:#176A78; --muted:#A9A696;
+    --mayo:#EDEAD9; --concrete:#1A1B1B;
+    --zenf:#DE9000; --ketchup:#C62000; --teal:#176A78; --muted:#B9B6A6;
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--concrete);color:var(--mayo);
@@ -21,31 +21,27 @@
   #room,#stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
   #room{object-fit:cover}
 
-  /* Text panel: overlay on the right of the stage on desktop */
+  /* Text: no background box, just a soft shadow so it reads over the room */
   #panel{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:30%;
-    padding:0 0 0 2%;background:linear-gradient(90deg,rgba(26,27,27,0) 0%,rgba(26,27,27,.8) 22%);
-    pointer-events:none}
-  #chtag{display:inline-block;font-size:12px;letter-spacing:.2em;padding:4px 10px;
-    border:1px solid currentColor;margin-bottom:18px;transition:color .25s,border-color .25s}
+    text-shadow:0 1px 14px rgba(0,0,0,.9);pointer-events:none}
   #name{font-family:Georgia,'Times New Roman',serif;font-weight:400;
     font-size:clamp(26px,3vw,44px);line-height:1.05;margin:0 0 8px;transition:opacity .18s,transform .28s}
   #role{font-size:13px;letter-spacing:.05em;color:var(--muted);margin-bottom:16px;transition:opacity .18s,transform .28s}
   #bio{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;
-    color:#cfc9b6;max-width:46ch;margin:0 0 24px;transition:opacity .18s,transform .28s}
+    color:#d8d2bf;max-width:46ch;margin:0 0 24px;transition:opacity .18s,transform .28s}
   .fade-out #name,.fade-out #role,.fade-out #bio{opacity:0;transform:translateY(6px)}
-  #schedule{list-style:none;margin:0;padding:0;border-top:1px solid rgba(237,234,217,.15);pointer-events:auto}
-  #schedule li{display:flex;gap:12px;padding:8px 0;font-size:12px;color:#7d7a6c;
-    border-bottom:1px solid rgba(237,234,217,.08);cursor:pointer;transition:color .2s}
-  #schedule li:hover{color:var(--mayo)}
-  #schedule li.active{color:var(--mayo)}
+  #schedule{list-style:none;margin:0;padding:0;border-top:1px solid rgba(237,234,217,.25);pointer-events:auto}
+  #schedule li{display:flex;gap:12px;padding:8px 0;font-size:12px;color:#8d8a7c;
+    border-bottom:1px solid rgba(237,234,217,.12);cursor:pointer;transition:color .2s}
+  #schedule li:hover,#schedule li.active{color:var(--mayo)}
 
   #hint{position:absolute;bottom:3%;left:0;right:0;text-align:center;font-size:11px;
-    letter-spacing:.18em;text-transform:uppercase;color:rgba(237,234,217,.45);pointer-events:none}
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(237,234,217,.5);pointer-events:none}
 
-  /* Phone: stage on top, text below */
+  /* Phone: stage on top, text below on the plain background */
   @media (max-width:700px){
     #frame{width:100vw}
-    #panel{position:static;transform:none;width:auto;padding:20px 16px;background:var(--concrete)}
+    #panel{position:static;transform:none;width:auto;padding:20px 16px;text-shadow:none}
     #hint{display:none}
   }
 </style>
@@ -55,12 +51,11 @@
 <div id="frame">
   <div id="stage">
     <img id="room" alt=""
-         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg-sence.webp">
+         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg.webp">
     <!-- three.js canvas is appended here -->
   </div>
 
   <div id="panel">
-    <div id="chtag">CH 01</div>
     <h1 id="name"></h1>
     <div id="role"></div>
     <p id="bio"></p>
@@ -74,293 +69,291 @@
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
 <script>
 (function () {
-  // ================= CONFIG =================
-  const TV_URL = 'https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/TV-textured-draco.glb';
+  // ================= FILES (all from the GitHub repo) =================
+  const DATA_BASE = 'https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/';
+  const TV_URL = DATA_BASE + 'TV-clean-draco.glb';
 
   const CONFIG = {
-    // fov from the Blender camera: 50 mm, 36 mm sensor, 16:10 => ~25.4° vertical
-    camera: { fov: 25.4, distance: 4.0, height: 1.0 },
-    // PLACEHOLDERS. Tune until the 3D TV sits on the painted TV (open with ?debug).
+    // Blender camera: 50 mm, 36 mm sensor, 16:10 => ~25.4° vertical. Camera position is set below.
+    camera: { fov: 25.4 },
+    // TV placement. Leave at identity unless the glb needs moving.
     tv: { x: 0, y: 0, z: 0, rotY: 0, scale: 1 }
   };
 
-  // Speaker data. Add the rest of the 15 here. Portraits must be 4:3 JPG/PNG on a CORS-enabled host.
-  const SPEAKERS = [
-    { name:'Mira Voss',     role:'Opening Keynote — The Shape of Tomorrow',
-      bio:'Mira spent a decade building systems that never shipped before founding a lab that only ships.',
-      portrait:null, c1:'#DE9000', c2:'#C62000' },
-    { name:'Denis Okafor',  role:'Systems Thinking for Chaotic Markets',
-      bio:'Denis models supply chains for a living and breaks them for fun.',
-      portrait:null, c1:'#176A78', c2:'#1A1B1B' },
-    { name:'Yuki Tanabe',   role:'Designing Trust into Machines',
-      bio:'Yuki argues the best interface is the one that tells you when to stop trusting it.',
-      portrait:null, c1:'#C62000', c2:'#242925' }
-  ];
-
-  let currentIndex = 0, isTransitioning = false;
-
-  // ================= DOM =================
-  const stage = document.getElementById('stage');
-  const nameEl = document.getElementById('name');
-  const roleEl = document.getElementById('role');
-  const bioEl = document.getElementById('bio');
-  const chtagEl = document.getElementById('chtag');
-  const panelEl = document.getElementById('panel');
-  const scheduleEl = document.getElementById('schedule');
   const DEBUG = new URLSearchParams(location.search).has('debug');
 
-  // ================= THREE.JS =================
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x000000, 0);          // transparent: room image shows through
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  stage.appendChild(renderer.domElement);
-  if (DEBUG) renderer.domElement.style.opacity = 0.5;
+  // Everything that uses the speaker data runs after speakers.json has loaded.
+  function start(SPEAKERS) {
+    let currentIndex = 0, isTransitioning = false;
 
-  const scene = new THREE.Scene();
-  // Camera: converted from the Blender camera (Blender X,Y,Z -> three.js X,Z,-Y).
-  // Blender camera location (0.1135, 0.1307, 0.3697), looking along -X toward the TV.
-  const camera = new THREE.PerspectiveCamera(CONFIG.camera.fov, 1.6, 0.05, 100);
-  camera.position.set(0.1135, 0.3697, -0.1307);
-  camera.lookAt(-2.8832, 0.3697, 0.0106);      // fixed: no sway, so the TV stays on the painted room
+    // ================= DOM =================
+    const stage = document.getElementById('stage');
+    const nameEl = document.getElementById('name');
+    const roleEl = document.getElementById('role');
+    const bioEl = document.getElementById('bio');
+    const panelEl = document.getElementById('panel');
+    const scheduleEl = document.getElementById('schedule');
 
-  // TV group: identity, because the .glb was exported with its world transforms baked in.
-  const tvGroup = new THREE.Group();
-  tvGroup.position.set(CONFIG.tv.x, CONFIG.tv.y, CONFIG.tv.z);
-  tvGroup.rotation.y = CONFIG.tv.rotY;
-  tvGroup.scale.setScalar(CONFIG.tv.scale);
-  scene.add(tvGroup);
+    // ================= THREE.JS =================
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);          // transparent: room image shows through
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    stage.appendChild(renderer.domElement);
+    if (DEBUG) renderer.domElement.style.opacity = 0.5;
 
-  scene.add(new THREE.HemisphereLight(0x176A78, 0x1A1B1B, 0.35));
-  // Glow in front of the screen. The screen faces the camera, so +X from the TV (about x = -2.9).
-  const glow = new THREE.PointLight(0xC62000, 1.2, 8, 2);
-  glow.position.set(-1.9, 0.5, 0);
-  scene.add(glow);
+    const scene = new THREE.Scene();
 
-  // ---- screen texture: one canvas, redrawn per channel ----
-  const SW = 512, SH = 384;
-  const screenCanvas = document.createElement('canvas');
-  screenCanvas.width = SW; screenCanvas.height = SH;
-  const sctx = screenCanvas.getContext('2d');
-  const screenTex = new THREE.CanvasTexture(screenCanvas);
-  screenTex.flipY = false;                      // glTF UV convention
-  screenTex.encoding = THREE.sRGBEncoding;
-  const screenMat = new THREE.MeshBasicMaterial({ map: screenTex });
+    // Camera: converted from the Blender camera (Blender X,Y,Z -> three.js X,Z,-Y).
+    // Blender location (0.1135, 0.1307, 0.3697), looking along -X toward the TV.
+    const camera = new THREE.PerspectiveCamera(CONFIG.camera.fov, 1.6, 0.05, 100);
+    camera.position.set(0.1135, 0.3697, -0.1307);
+    camera.lookAt(-2.8832, 0.3697, 0.0106);       // fixed: no sway, so the TV stays on the painted room
+    camera.updateMatrixWorld(true);
 
-  // Static overlay for channel changes (own mesh on top of the screen)
-  const NOISE = 48;
-  const noiseCanvas = document.createElement('canvas');
-  noiseCanvas.width = noiseCanvas.height = NOISE;
-  const nctx = noiseCanvas.getContext('2d');
-  const noiseTex = new THREE.CanvasTexture(noiseCanvas);
-  noiseTex.magFilter = noiseTex.minFilter = THREE.NearestFilter;
-  function redrawNoise() {
-    const img = nctx.createImageData(NOISE, NOISE);
-    for (let i = 0; i < img.data.length; i += 4) {
-      const v = Math.random() * 255;
-      img.data[i] = img.data[i+1] = img.data[i+2] = v; img.data[i+3] = 255;
+    const tvGroup = new THREE.Group();
+    tvGroup.position.set(CONFIG.tv.x, CONFIG.tv.y, CONFIG.tv.z);
+    tvGroup.rotation.y = CONFIG.tv.rotY;
+    tvGroup.scale.setScalar(CONFIG.tv.scale);
+    scene.add(tvGroup);
+
+    // Lights
+    scene.add(new THREE.HemisphereLight(0x176A78, 0x1A1B1B, 0.35));
+    const glow = new THREE.PointLight(0xC62000, 1.2, 8, 2);
+    glow.position.set(-1.9, 0.5, 0);               // in front of the screen (the screen faces the camera)
+    scene.add(glow);
+
+    // Shell materials: one clean dark finish for the whole TV. Blender's exported
+    // materials were procedural and lost their textures, so they are replaced here.
+    const shellMat = new THREE.MeshStandardMaterial({ color: 0x2a2622, roughness: 0.55, metalness: 0.1 });
+    const ledMat   = new THREE.MeshStandardMaterial({ color: 0xC62000, emissive: 0xC62000, emissiveIntensity: 0.6, roughness: 0.4 });
+
+    // ---- screen texture: one canvas, redrawn per channel ----
+    const SW = 512, SH = 384;
+    const screenCanvas = document.createElement('canvas');
+    screenCanvas.width = SW; screenCanvas.height = SH;
+    const sctx = screenCanvas.getContext('2d');
+    const screenTex = new THREE.CanvasTexture(screenCanvas);
+    screenTex.flipY = false;                       // glTF UV convention
+    screenTex.encoding = THREE.sRGBEncoding;
+    const screenMat = new THREE.MeshBasicMaterial({ map: screenTex });
+
+    // Static overlay for channel changes
+    const NOISE = 48;
+    const noiseCanvas = document.createElement('canvas');
+    noiseCanvas.width = noiseCanvas.height = NOISE;
+    const nctx = noiseCanvas.getContext('2d');
+    const noiseTex = new THREE.CanvasTexture(noiseCanvas);
+    noiseTex.magFilter = noiseTex.minFilter = THREE.NearestFilter;
+    function redrawNoise() {
+      const img = nctx.createImageData(NOISE, NOISE);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = Math.random() * 255;
+        img.data[i] = img.data[i+1] = img.data[i+2] = v; img.data[i+3] = 255;
+      }
+      nctx.putImageData(img, 0, 0);
+      noiseTex.needsUpdate = true;
     }
-    nctx.putImageData(img, 0, 0);
-    noiseTex.needsUpdate = true;
-  }
-  redrawNoise();
-  const staticMat = new THREE.MeshBasicMaterial({ map: noiseTex, transparent: true, opacity: 0 });
+    redrawNoise();
+    const staticMat = new THREE.MeshBasicMaterial({ map: noiseTex, transparent: true, opacity: 0 });
 
-  // Preload portraits. Cross-origin images must be CORS-enabled or the canvas cannot be drawn to the texture.
-  const portraits = SPEAKERS.map((s) => {
-    if (!s.portrait) return null;
-    const im = new Image();
-    im.crossOrigin = 'anonymous';
-    im.onload = () => { if (SPEAKERS[currentIndex].portrait === s.portrait) drawChannel(currentIndex, true); };
-    im.src = s.portrait;
-    return im;
-  });
-
-  // ---- draw one channel onto the screen canvas ----
-  function drawChannel(index, blink) {
-    const s = SPEAKERS[index], ctx = sctx, w = SW, h = SH;
-    const img = portraits[index];
-
-    if (img && img.complete && img.naturalWidth) {
-      const r = Math.max(w / img.naturalWidth, h / img.naturalHeight);   // cover-fit
-      ctx.drawImage(img, (w - img.naturalWidth * r) / 2, (h - img.naturalHeight * r) / 2,
-                    img.naturalWidth * r, img.naturalHeight * r);
-    } else {
-      const g = ctx.createRadialGradient(w*.5, h*.42, 20, w*.5, h*.5, w*.7);
-      g.addColorStop(0, s.c1); g.addColorStop(1, s.c2);
-      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-      const initials = s.name.split(' ').map(p => p[0]).join('');
-      ctx.fillStyle = 'rgba(237,234,217,0.92)';
-      ctx.font = 'bold 78px Georgia, serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(initials, w*.5, h*.42 + 6);
-    }
-
-    // name bar
-    ctx.fillStyle = 'rgba(26,27,27,0.78)'; ctx.fillRect(0, h - 56, w, 56);
-    ctx.fillStyle = '#EDEAD9'; ctx.font = '24px "Courier New", monospace';
-    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText(s.name, 16, h - 22);
-
-    // channel label + on-air
-    ctx.font = '20px "Courier New", monospace';
-    ctx.fillStyle = 'rgba(237,234,217,0.9)';
-    ctx.fillText('CH ' + String(index + 1).padStart(2, '0'), 16, 30);
-    ctx.textAlign = 'right';
-    ctx.fillStyle = blink ? 'rgba(255,90,90,0.95)' : 'rgba(255,90,90,0.15)';
-    ctx.fillText('● ON AIR', w - 16, 30);
-
-    // scanlines + vignette
-    ctx.fillStyle = 'rgba(0,0,0,0.12)';
-    for (let y = 0; y < h; y += 3) ctx.fillRect(0, y, w, 1);
-    const v = ctx.createRadialGradient(w*.5, h*.5, h*.35, w*.5, h*.5, h*.75);
-    v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)');
-    ctx.fillStyle = v; ctx.fillRect(0, 0, w, h);
-
-    screenTex.needsUpdate = true;
-  }
-
-  // ---- load the TV ----
-  let screenMesh = null;
-  const draco = new THREE.DRACOLoader();
-  draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/gltf/');
-  const gltfLoader = new THREE.GLTFLoader();
-  gltfLoader.setDRACOLoader(draco);
-
-  gltfLoader.load(TV_URL, (gltf) => {
-    tvGroup.add(gltf.scene);
-    screenMesh = gltf.scene.getObjectByName('Screen');
-    if (!screenMesh) { console.error('No mesh named "Screen" in the TV file'); return; }
-    screenMesh.material = screenMat;
-
-    // Recolour the TV shell from its Blender material names (the textures were removed)
-    const MAT_COLORS = {
-      'Plastic Black 1': 0x161514,   // bezel and dark plastic
-      'Procedural Wood': 0x4a2c16,   // wood base
-      'Plastic Desktop': 0x2a2622,
-      'led':             0xC62000    // small LEDs, Ketchup red
-    };
-    gltf.scene.traverse((o) => {
-      if (!o.isMesh || o === screenMesh) return;
-      const mats = Array.isArray(o.material) ? o.material : [o.material];
-      mats.forEach((m) => {
-        if (m.map) return;                 // keep textured materials exactly as exported
-        const c = MAT_COLORS[m.name];
-        m.color.setHex(c !== undefined ? c : 0x2a2622);   // default: dark plastic
-        m.roughness = 0.5;
-        m.metalness = 0;
-        m.needsUpdate = true;
-      });
+    // Portraits: loaded from the repo. They need CORS (jsDelivr provides it).
+    const portraits = SPEAKERS.map((s) => {
+      if (!s.portrait) return null;
+      const im = new Image();
+      im.crossOrigin = 'anonymous';
+      im.onload = () => { if (SPEAKERS.indexOf(s) === currentIndex) drawChannel(currentIndex, true); };
+      im.src = DATA_BASE + s.portrait;
+      return im;
     });
 
-    // Static overlay: a copy of the screen mesh, scaled up slightly so it sits in front of the screen
-    const overlay = screenMesh.clone();
-    overlay.material = staticMat;
-    overlay.scale.multiplyScalar(1.002);
-    screenMesh.parent.add(overlay);
+    // ---- draw one channel onto the screen ----
+    function drawChannel(index, blink) {
+      const s = SPEAKERS[index], ctx = sctx, w = SW, h = SH;
+      const img = portraits[index];
 
-    // Check numbers: the screen centre should be near x = -2.9, y ≈ 0.4 (three.js space)
-    const scr = new THREE.Box3().setFromObject(screenMesh);
-    console.log('Screen centre:', scr.getCenter(new THREE.Vector3()));
-    console.log('Screen size (m):', scr.getSize(new THREE.Vector3()));
-
-    drawChannel(0, true);
-    renderSchedule();
-    updatePanel(0);
-  }, undefined, (err) => console.error('TV failed to load', err));
-
-  // ================= PANEL + CHANNELS =================
-  function renderSchedule() {
-    scheduleEl.innerHTML = '';
-    SPEAKERS.forEach((s, i) => {
-      const li = document.createElement('li');
-      li.className = i === currentIndex ? 'active' : '';
-      li.innerHTML = `<span>CH ${String(i+1).padStart(2,'0')}</span><span>${s.name}</span>`;
-      li.addEventListener('click', () => { if (!isTransitioning) switchChannel(i); });
-      scheduleEl.appendChild(li);
-    });
-  }
-
-  function updatePanel(index) {
-    const s = SPEAKERS[index];
-    chtagEl.textContent = 'CH ' + String(index + 1).padStart(2, '0');
-    chtagEl.style.color = s.c1;
-    chtagEl.style.borderColor = s.c1;
-    nameEl.textContent = s.name;
-    roleEl.textContent = s.role;
-    bioEl.textContent = s.bio;
-    renderSchedule();
-  }
-  updatePanel(0);
-
-  function switchChannel(newIndex) {
-    if (isTransitioning || newIndex === currentIndex) return;
-    isTransitioning = true;
-    panelEl.classList.add('fade-out');
-    const start = performance.now(), total = 480;
-    const noiseTimer = setInterval(redrawNoise, 45);
-
-    function tick(now) {
-      const p = Math.min(1, (now - start) / total);
-      if (p < 0.5) {
-        staticMat.opacity = p / 0.5;
+      if (img && img.complete && img.naturalWidth) {
+        const r = Math.max(w / img.naturalWidth, h / img.naturalHeight);   // cover-fit
+        ctx.drawImage(img, (w - img.naturalWidth * r) / 2, (h - img.naturalHeight * r) / 2,
+                      img.naturalWidth * r, img.naturalHeight * r);
       } else {
-        if (currentIndex !== newIndex) {
-          currentIndex = newIndex;
-          drawChannel(currentIndex, true);
-          updatePanel(currentIndex);
+        const g = ctx.createRadialGradient(w*.5, h*.42, 20, w*.5, h*.5, w*.7);
+        g.addColorStop(0, s.c1 || '#DE9000'); g.addColorStop(1, s.c2 || '#1A1B1B');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+        const initials = s.name.split(' ').map(p => p[0]).join('');
+        ctx.fillStyle = 'rgba(237,234,217,0.92)';
+        ctx.font = 'bold 78px Georgia, serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(initials, w*.5, h*.42 + 6);
+      }
+
+      // name bar
+      ctx.fillStyle = 'rgba(26,27,27,0.78)'; ctx.fillRect(0, h - 56, w, 56);
+      ctx.fillStyle = '#EDEAD9'; ctx.font = '24px "Courier New", monospace';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(s.name, 16, h - 22);
+
+      // channel number (top left) + on-air (top right)
+      ctx.font = '22px "Courier New", monospace';
+      ctx.fillStyle = 'rgba(237,234,217,0.95)';
+      ctx.textAlign = 'left';
+      ctx.fillText('CH ' + String(index + 1).padStart(2, '0'), 16, 34);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = blink ? 'rgba(255,90,90,0.95)' : 'rgba(255,90,90,0.15)';
+      ctx.fillText('● ON AIR', w - 16, 34);
+
+      // scanlines + vignette
+      ctx.fillStyle = 'rgba(0,0,0,0.12)';
+      for (let y = 0; y < h; y += 3) ctx.fillRect(0, y, w, 1);
+      const v = ctx.createRadialGradient(w*.5, h*.5, h*.35, w*.5, h*.5, h*.75);
+      v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)');
+      ctx.fillStyle = v; ctx.fillRect(0, 0, w, h);
+
+      screenTex.needsUpdate = true;
+    }
+
+    // ---- load the TV ----
+    let screenMesh = null;
+    const draco = new THREE.DRACOLoader();
+    draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/gltf/');
+    const gltfLoader = new THREE.GLTFLoader();
+    gltfLoader.setDRACOLoader(draco);
+
+    gltfLoader.load(TV_URL, (gltf) => {
+      const root = gltf.scene;
+      tvGroup.add(root);
+
+      // 1) Shell materials: everything except the screen gets the clean finish
+      root.traverse((o) => {
+        if (!o.isMesh) return;
+        const fix = (m) => (m && m.name === 'led') ? ledMat : shellMat;
+        o.material = Array.isArray(o.material) ? o.material.map(fix) : fix(o.material);
+      });
+
+      // 2) Screen: the mesh named "Screen"
+      screenMesh = root.getObjectByName('Screen');
+      if (!screenMesh) { console.error('No mesh named "Screen" in the TV file'); return; }
+      screenMesh.material = screenMat;
+
+      // 3) If something sits in front of the screen (for example black glass), hide it
+      root.updateMatrixWorld(true);
+      const screenCentre = new THREE.Box3().setFromObject(screenMesh).getCenter(new THREE.Vector3());
+      const dir = screenCentre.clone().sub(camera.position).normalize();
+      const hits = new THREE.Raycaster(camera.position, dir).intersectObject(root, true);
+      if (hits.length && hits[0].object !== screenMesh) {
+        console.log('Hiding mesh in front of screen:', hits[0].object.name);
+        hits[0].object.material = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
+      }
+
+      // 4) Static overlay: a copy of the screen mesh, scaled up slightly
+      const overlay = screenMesh.clone();
+      overlay.material = staticMat;
+      overlay.scale.multiplyScalar(1.002);
+      screenMesh.parent.add(overlay);
+
+      // Check numbers
+      const scr = new THREE.Box3().setFromObject(screenMesh);
+      console.log('Screen centre:', scr.getCenter(new THREE.Vector3()));
+      console.log('Screen size (m):', scr.getSize(new THREE.Vector3()));
+
+      drawChannel(0, true);
+      updatePanel(0);
+    }, undefined, (err) => console.error('TV failed to load', err));
+
+    // ================= PANEL + CHANNELS =================
+    function renderSchedule() {
+      scheduleEl.innerHTML = '';
+      SPEAKERS.forEach((s, i) => {
+        const li = document.createElement('li');
+        li.className = i === currentIndex ? 'active' : '';
+        li.innerHTML = `<span>CH ${String(i+1).padStart(2,'0')}</span><span>${s.name}</span>`;
+        li.addEventListener('click', () => { if (!isTransitioning) switchChannel(i); });
+        scheduleEl.appendChild(li);
+      });
+    }
+
+    function updatePanel(index) {
+      const s = SPEAKERS[index];
+      nameEl.textContent = s.name;
+      roleEl.textContent = s.role;
+      bioEl.textContent = s.bio;
+      renderSchedule();
+    }
+    updatePanel(0);
+
+    function switchChannel(newIndex) {
+      if (isTransitioning || newIndex === currentIndex) return;
+      isTransitioning = true;
+      panelEl.classList.add('fade-out');
+      const start = performance.now(), total = 480;
+      const noiseTimer = setInterval(redrawNoise, 45);
+
+      function tick(now) {
+        const p = Math.min(1, (now - start) / total);
+        if (p < 0.5) {
+          staticMat.opacity = p / 0.5;
+        } else {
+          if (currentIndex !== newIndex) {
+            currentIndex = newIndex;
+            drawChannel(currentIndex, true);
+            updatePanel(currentIndex);
+          }
+          staticMat.opacity = 1 - (p - 0.5) / 0.5;
         }
-        staticMat.opacity = 1 - (p - 0.5) / 0.5;
+        if (p < 1) requestAnimationFrame(tick);
+        else {
+          clearInterval(noiseTimer);
+          staticMat.opacity = 0;
+          isTransitioning = false;
+          panelEl.classList.remove('fade-out');
+        }
       }
-      if (p < 1) requestAnimationFrame(tick);
-      else {
-        clearInterval(noiseTimer);
-        staticMat.opacity = 0;
-        isTransitioning = false;
-        panelEl.classList.remove('fade-out');
-      }
+      requestAnimationFrame(tick);
     }
-    requestAnimationFrame(tick);
-  }
 
-  // ================= INPUT =================
-  let wheelLock = false;
-  function step(dir) {
-    if (wheelLock || isTransitioning) return;
-    wheelLock = true;
-    setTimeout(() => { wheelLock = false; }, 550);
-    switchChannel((currentIndex + dir + SPEAKERS.length) % SPEAKERS.length);
-  }
-  window.addEventListener('wheel', (e) => {
-    if (window.innerWidth > 700) e.preventDefault();
-    step(e.deltaY > 0 ? 1 : -1);
-  }, { passive: false });
+    // ================= INPUT =================
+    let wheelLock = false;
+    function step(dir) {
+      if (wheelLock || isTransitioning) return;
+      wheelLock = true;
+      setTimeout(() => { wheelLock = false; }, 550);
+      switchChannel((currentIndex + dir + SPEAKERS.length) % SPEAKERS.length);
+    }
+    window.addEventListener('wheel', (e) => {
+      if (window.innerWidth > 700) e.preventDefault();
+      step(e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
 
-  let touchY = null;
-  window.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
-  window.addEventListener('touchmove', (e) => {
-    if (touchY === null) return;
-    const dy = touchY - e.touches[0].clientY;
-    if (Math.abs(dy) > 40) { step(dy > 0 ? 1 : -1); touchY = null; }
-  }, { passive: true });
+    let touchY = null;
+    window.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (touchY === null) return;
+      const dy = touchY - e.touches[0].clientY;
+      if (Math.abs(dy) > 40) { step(dy > 0 ? 1 : -1); touchY = null; }
+    }, { passive: true });
 
-  // ================= RESIZE + RENDER =================
-  function resize() {
-    renderer.setSize(stage.clientWidth, stage.clientHeight);
-  }
-  new ResizeObserver(resize).observe(stage);
-  resize();
+    // ================= RESIZE + RENDER =================
+    function resize() { renderer.setSize(stage.clientWidth, stage.clientHeight); }
+    new ResizeObserver(resize).observe(stage);
+    resize();
 
-  let lastBlink = 0, blinkOn = true;
-  function animate(now) {
+    let lastBlink = 0, blinkOn = true;
+    function animate(now) {
+      requestAnimationFrame(animate);
+      if (!isTransitioning && now - lastBlink > 650 && screenMesh) {
+        lastBlink = now; blinkOn = !blinkOn;
+        drawChannel(currentIndex, blinkOn);
+      }
+      renderer.render(scene, camera);
+    }
     requestAnimationFrame(animate);
-    if (!isTransitioning && now - lastBlink > 650 && screenMesh) {
-      lastBlink = now; blinkOn = !blinkOn;
-      drawChannel(currentIndex, blinkOn);
-    }
-    renderer.render(scene, camera);
   }
-  requestAnimationFrame(animate);
+
+  // Load the speaker list from the repo, then start the page
+  fetch(DATA_BASE + 'speakers.json')
+    .then((r) => { if (!r.ok) throw new Error('speakers.json: HTTP ' + r.status); return r.json(); })
+    .then((d) => start(d.speakers))
+    .catch((err) => console.error('Could not load speakers.json', err));
 })();
 </script>
 </body>
