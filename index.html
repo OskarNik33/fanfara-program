@@ -51,7 +51,7 @@
 <div id="frame">
   <div id="stage">
     <img id="room" alt=""
-         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg-sence.webp">
+         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg.webp">
     <!-- three.js canvas is appended here -->
   </div>
 
@@ -66,12 +66,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
 <script>
 (function () {
   // ================= FILES (all from the GitHub repo) =================
   const DATA_BASE = 'https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/';
-  const TV_URL = DATA_BASE + 'TV-clean.glb';
+  const TV_URL = DATA_BASE + 'TV-textured.glb';   // full materials and textures, not Draco-compressed
 
   const CONFIG = {
     // Blender camera: 50 mm, 36 mm sensor, 16:10 => ~25.4° vertical. Camera position is set below.
@@ -122,11 +121,6 @@
     const glow = new THREE.PointLight(0xC62000, 1.2, 8, 2);
     glow.position.set(-1.9, 0.5, 0);               // in front of the screen (the screen faces the camera)
     scene.add(glow);
-
-    // Shell materials: one clean dark finish for the whole TV. Blender's exported
-    // materials were procedural and lost their textures, so they are replaced here.
-    const shellMat = new THREE.MeshStandardMaterial({ color: 0x2a2622, roughness: 0.55, metalness: 0.1 });
-    const ledMat   = new THREE.MeshStandardMaterial({ color: 0xC62000, emissive: 0xC62000, emissiveIntensity: 0.6, roughness: 0.4 });
 
     // ---- screen texture: one canvas, redrawn per channel ----
     const SW = 512, SH = 384;
@@ -214,28 +208,18 @@
 
     // ---- load the TV ----
     let screenMesh = null;
-    const draco = new THREE.DRACOLoader();
-    draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/gltf/');
     const gltfLoader = new THREE.GLTFLoader();
-    gltfLoader.setDRACOLoader(draco);
 
     gltfLoader.load(TV_URL, (gltf) => {
       const root = gltf.scene;
       tvGroup.add(root);
 
-      // 1) Shell materials: everything except the screen gets the clean finish
-      root.traverse((o) => {
-        if (!o.isMesh) return;
-        const fix = (m) => (m && m.name === 'led') ? ledMat : shellMat;
-        o.material = Array.isArray(o.material) ? o.material.map(fix) : fix(o.material);
-      });
-
-      // 2) Screen: the mesh named "Screen"
+      // 1) Screen: the mesh named "Screen" gets the channel texture. Everything else keeps its Blender materials.
       screenMesh = root.getObjectByName('Screen');
       if (!screenMesh) { console.error('No mesh named "Screen" in the TV file'); return; }
       screenMesh.material = screenMat;
 
-      // 3) If something sits in front of the screen (for example black glass), hide it
+      // 2) If something sits in front of the screen (for example black glass), hide it
       root.updateMatrixWorld(true);
       const screenCentre = new THREE.Box3().setFromObject(screenMesh).getCenter(new THREE.Vector3());
       const dir = screenCentre.clone().sub(camera.position).normalize();
@@ -245,7 +229,7 @@
         hits[0].object.material = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
       }
 
-      // 4) Static overlay: a copy of the screen mesh, scaled up slightly
+      // 3) Static overlay: a copy of the screen mesh, scaled up slightly
       const overlay = screenMesh.clone();
       overlay.material = staticMat;
       overlay.scale.multiplyScalar(1.002);
