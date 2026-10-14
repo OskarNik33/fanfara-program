@@ -61,7 +61,7 @@
 <div id="frame">
   <div id="stage">
     <img id="room" alt=""
-         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg.webp">
+         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg-sence.webp">
     <!-- three.js canvas is appended here -->
   </div>
 
@@ -142,7 +142,7 @@
     screenCanvas.width = SW; screenCanvas.height = SH;
     const sctx = screenCanvas.getContext('2d');
     const screenTex = new THREE.CanvasTexture(screenCanvas);
-    screenTex.flipY = false;                       // glTF UV convention
+    screenTex.flipY = true;                        // our own plane uses standard UVs
     screenTex.encoding = THREE.sRGBEncoding;
     const screenMat = new THREE.MeshBasicMaterial({ map: screenTex });
 
@@ -257,11 +257,28 @@
         hits[0].object.material = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false });
       }
 
-      // 3) Static overlay: a copy of the screen mesh, scaled up slightly
-      const overlay = screenMesh.clone();
-      overlay.material = staticMat;
-      overlay.scale.multiplyScalar(1.002);
-      screenMesh.parent.add(overlay);
+      // 3) Picture plane: our own flat plane at the screen's position, facing the camera.
+      //    It is drawn on top of anything in front of it, so the glass cannot hide it,
+      //    and it does not depend on the orientation or UVs of the exported mesh.
+      const box = new THREE.Box3().setFromObject(screenMesh);
+      const c = box.getCenter(new THREE.Vector3());
+      const d = box.getSize(new THREE.Vector3());
+      const dims = [d.x, d.y, d.z].sort((a, b) => b - a);
+      const w = dims[0], h = dims[1];
+      screenMesh.visible = false;
+
+      const picture = new THREE.Mesh(new THREE.PlaneGeometry(w, h), screenMat);
+      picture.position.copy(c);
+      picture.lookAt(camera.position);
+      picture.renderOrder = 999;
+      scene.add(picture);
+
+      // Static overlay for channel changes, on the same plane
+      const staticPlane = new THREE.Mesh(new THREE.PlaneGeometry(w, h), staticMat);
+      staticPlane.position.copy(c);
+      staticPlane.lookAt(camera.position);
+      staticPlane.renderOrder = 1000;
+      scene.add(staticPlane);
 
       // Check numbers
       const scr = new THREE.Box3().setFromObject(screenMesh);
