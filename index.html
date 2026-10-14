@@ -61,7 +61,7 @@
 <div id="frame">
   <div id="stage">
     <img id="room" alt=""
-         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg-sence.webp">
+         src="https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/room-bg.webp">
     <!-- three.js canvas is appended here -->
   </div>
 
@@ -89,7 +89,7 @@
     // Blender camera: 50 mm, 36 mm sensor, 16:10 => ~25.4° vertical. Camera position is set below.
     camera: { fov: 25.4 },
     // TV placement. Leave at identity unless the glb needs moving.
-    tv: { x: 0, y: 0, z: 0, rotY: 0, scale: 1 }
+    tv: { x: 0, y: 0, z: 0, rotY: 0, scale: 1, darken: 0.4 }   // darken: 1 = as exported, lower = darker shell
   };
 
   const DEBUG = new URLSearchParams(location.search).has('debug');
@@ -132,7 +132,7 @@
 
     // Lights
     scene.add(new THREE.HemisphereLight(0x176A78, 0x1A1B1B, 0.35));
-    const glow = new THREE.PointLight(0xC62000, 1.2, 8, 2);
+    const glow = new THREE.PointLight(0xC62000, 0.6, 8, 2);
     glow.position.set(-1.9, 0.5, 0);               // in front of the screen (the screen faces the camera)
     scene.add(glow);
 
@@ -163,7 +163,7 @@
       noiseTex.needsUpdate = true;
     }
     redrawNoise();
-    const staticMat = new THREE.MeshBasicMaterial({ map: noiseTex, transparent: true, opacity: 0 });
+    const staticMat = new THREE.MeshBasicMaterial({ map: noiseTex, transparent: true, opacity: 0, depthTest: false });
 
     // Portraits: loaded from the repo. They need CORS (jsDelivr provides it).
     const portraits = SPEAKERS.map((s) => {
@@ -235,6 +235,17 @@
       screenMesh = root.getObjectByName('Screen');
       if (!screenMesh) { console.error('No mesh named "Screen" in the TV file'); return; }
       screenMesh.material = screenMat;
+      screenMat.side = THREE.DoubleSide;     // show the picture even if the mesh faces away
+      screenMat.depthTest = false;           // draw the picture even if glass sits in front
+      screenMesh.renderOrder = 999;
+
+      // Darken the TV shell (the screen itself is not changed)
+      root.traverse((o) => {
+        if (!o.isMesh || o === screenMesh) return;
+        (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => {
+          if (m.color) m.color.multiplyScalar(CONFIG.tv.darken);
+        });
+      });
 
       // 2) If something sits in front of the screen (for example black glass), hide it
       root.updateMatrixWorld(true);
@@ -361,7 +372,7 @@
   }
 
   // Load the speaker list from the repo, then start the page
-  fetch(DATA_BASE + 'speakers.json')
+  fetch('https://oskarnik33.github.io/fanfara-program/speakers.json', { cache: 'no-store' })
     .then((r) => { if (!r.ok) throw new Error('speakers.json: HTTP ' + r.status); return r.json(); })
     .then((d) => start(d.speakers))
     .catch((err) => console.error('Could not load speakers.json', err));
