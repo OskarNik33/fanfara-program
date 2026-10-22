@@ -47,10 +47,55 @@
     },
     {
       "name": "JULIJA HORVAT ZEILHOFER",
-      "role": "Global Product Manager / Globalna Produktna Managerka pri adidas Originals.",
+      "role": "Global Product Manager / Globalna Produktna Managerka pri adidas Originals",
       "talk": "Kaj vse se mora zgoditi, preden produkt osvoji police trgovin?",
       "bio": "Julija Horvat Zeilhofer je Global Product Manager pri adidas Originals. Na sedežu znamke v Nemčiji soustvarja produktne strategije in kolekcije za evropski in globalni trg.\n\nTrenutno vodi ekskluzivne produktne linije za nekatere ključne evropske partnerje, kot so JD Sports, Zalando in Snipes. Obenem sodeluje tudi pri razvoju produktov od prvih idej do trenutka, ko ti ugledajo svetlobo trga.\n\nNa Fanfari bo Julija pokazala, kakšno vlogo ima Product Manager pri povezovanju kreativnosti, potreb potrošnikov in poslovne strategije. Skozi svojo kariero v tujini bo razkrila ozadje nastajanja produktov za globalne športne znamke. Saj ni dovolj, da znamo gledati v ekran. Pomembno je imeti oči na pecljih, ki sežejo onkraj našega horizonta.",
       "portrait": "portraits/Julija-Horvat-Zeilhofer.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "IVICA KOSTELIĆ",
+      "role": "Eden najuspešnejših alpskih smučarjev",
+      "talk": "Res vedno zmagaš takrat, ko prvi prečkaš ciljno črto?",
+      "bio": "Ivica Kostelić je eden najuspešnejših hrvaških alpskih smučarjev. V svoji bogati karieri je osvojil številne kolajne in jo nemalokrat, tudi po tekmi, znova ubral po stopničkah navzgor.\n\nOsvojil je štiri srebrne olimpijske medalje ter kar 26 zmag v svetovnem pokalu. Leta 2011 je osvojil veliki kristalni globus. Kljub vrhunski karieri se je soočal tudi z izzivi, ki so od njega zahtevali veliko mero vztrajnosti in samodiscipline.\n\nNa Fanfari bo Ivica pripovedoval o zmagi in porazu. Razmišljal bo o tem, kaj nam pomenita in koliko poguma potrebujemo, da znova poiščemo cilj po porazu in celo po zmagi.",
+      "portrait": "portraits/Ivica-Kostelic.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "KATJA PETRIN DORNIK",
+      "role": "One of Slovenia’s most awarded Creative Directors.",
+      "talk": "Od briefa do kampanje. In o marsičem, kar se zgodi vmes.",
+      "bio": "Katja Petrin Dornik je kreativna direktorica pri Agenciji 101, v svoji dolgoletni karieri pa je soustvarila mnoge najvidnejše oglaševalske kampanje pri nas. Svojo kreativno pot je gradila tudi pri agencijah Luna/TBWA, Grey (zdaj Shift) ter Herman in partnerji.\n\nNa Fanfari bo skupaj z Majo Kalan predstavila zakulisje jubilejne kampanje Mlečno je srečno, s katero Ljubljanske mlekarne letos obeležujejo 70 let. Razkrila bo, kako se lotiti kreativnih izzivov, iz omejitev ustvariti priložnosti in razviti idejo v kampanjo, ki se ne konča z eno piko, ampak odpre prostor za tri.",
+      "portrait": "portraits/Katja-Petrin-Dornik.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "MAJA KALAN",
+      "role": "vodja korporativnega komuniciranja in družbene odgovornosti v Ljubljanskih mlekarnah",
+      "talk": "Od briefa do kampanje. In o marsičem, kar se zgodi vmes.",
+      "bio": "Maja Kalan je vodja korporativnega komuniciranja in družbene odgovornosti v Ljubljanskih mlekarnah. Svojo kariero je začela kot novinarka, pozneje prevzela tudi uredniške vloge, nato pa svojo pot nadaljevala v korporativnem komuniciranju. Pod njenim vodstvom so komunikacijski projekti podjetja trikrat prejeli nagrado Prizma za komunikacijsko odličnost.\n\nNa Fanfari bo skupaj s Katjo Petrin Dornik predstavila zakulisje jubilejne kampanje Mlečno je srečno, s katero Ljubljanske mlekarne letos obeležujejo 70 let. Razkrila bo, kako povezati zgodbo znamke s kreativno idejo, iz omejitev ustvariti priložnosti in razviti kampanjo, ki se ne konča z eno piko, ampak odpre prostor za tri.",
+      "portrait": "portraits/Maja-Kalan.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "IRENA FONDA",
+      "role": "doktorica molekularne biologije in biokemije. Direktorica in soustanoviteljica Zavoda YouSea, zavoda za ohranjanje biodiverzitete morja, ter Fonda.si d.o.o.",
+      "talk": "Kako globoko sega dobra znamka?",
+      "bio": "Irena Fonda je doktorica molekularne biologije in biokemije ter prejemnica številnih priznanj za študijske dosežke. Obenem je direktorica in soustanoviteljica Fonda.si d.o.o. ter Zavoda YouSea.\n\nIz prve ideje za ribogojnico je zrasla prepoznavna blagovna znamka Fonda, zgrajena na jasnih vrednotah in zaupanju kupcev. Ljubezen do morja jo je vodila tudi do ustanovitve Zavoda YouSea, ki skrbi za ohranjanje morskega ekosistema.\n\nNa Fanfari nas bo Irena potopila v svet blagovne znamke, ki ne odraža le izdelka, temveč tudi vrednote ljudi, ki predano stojijo za njo. Popeljala nas bo na pot do morskega dna in vendar proti vrhu.",
+      "portrait": "portraits/Irena-Fonda.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "IRENA DEŽELAK",
+      "role": "Founder and director at AKADEMIJA USPEHA GROUP",
+      "talk": "Si upaš voditi drugače?",
+      "bio": "Mag. Irena Deželak je mednarodna predavateljica, poslovna coachinja in direktorica Akademije Uspeha Group z več kot 25 leti izkušenj v svetu vodenja, komunikacije in razvoja ljudi.\n\nNjena predavanja, seminarje in delavnice je obiskalo že več kot 50.000 udeležencev na več kot 4.000 dogodkih. Kot ena izmed le 40 certificiranih PCM Master Trainer strokovnjakov na svetu sodi v izbrani mednarodni krog ekspertov za Process Communication Model razvit s strani NASE.\n\nNa Fanfari bo Irena pokazala kako prevzeti vajeti vodenja. Predala bo misel, da ljudje ne delujejo po formulah in da pristop, ki pri enem deluje odlično, lahko pri drugem povzroči povsem nasproten učinek. Včasih največji leadership izziv ni v tem, da vemo, kaj narediti, ampak da si upamo narediti drugače.",
+      "portrait": "portraits/Irena-Dezelak.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
     }
