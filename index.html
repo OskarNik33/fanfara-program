@@ -36,8 +36,8 @@
 
   /* Channel list: left of the TV, in front of the room */
   #sched{position:absolute;left:3%;top:calc(var(--topbar) + (100% - var(--topbar)) / 2);transform:translateY(-50%);width:27%;z-index:5;
-    padding:12px 0 6px;text-shadow:0 1px 10px rgba(0,0,0,.95);pointer-events:auto}
-  #sched-head{font-family:'VCR','Courier New',monospace;font-size:clamp(13px,1.9vh,22px);
+    padding:12px 0 6px;pointer-events:auto}
+  #sched-head{text-shadow:none;font-family:'VCR','Courier New',monospace;font-size:clamp(13px,1.9vh,22px);
     letter-spacing:.06em;color:var(--zenf);padding:0 16px 10px;border-bottom:2px solid var(--zenf)}
   #schedule{list-style:none;margin:0;padding:0}
   #schedule li{display:grid;grid-template-columns:4.6em 1fr;align-items:center;gap:8px;
@@ -58,7 +58,7 @@
     background:rgba(26,27,27,.86);
     pointer-events:auto;scrollbar-width:none}
   #panel::-webkit-scrollbar{display:none}
-  #name{display:inline-block;font-family:'VCR','Courier New',monospace;font-weight:400;
+  #name{text-shadow:none;display:inline-block;font-family:'VCR','Courier New',monospace;font-weight:400;
     font-size:clamp(26px,3vw,44px);line-height:1.05;background:var(--zenf);color:var(--concrete);
     padding:.12em .3em .08em;margin:0 0 16px;transition:opacity .18s,transform .28s}
   #role{font-size:13px;letter-spacing:.05em;color:var(--muted);margin-bottom:16px;transition:opacity .18s,transform .28s}
