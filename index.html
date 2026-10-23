@@ -10,7 +10,7 @@
 <style>
   @font-face{
     font-family:'VCR';
-    src:url('https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/VCR_OSD_MONO_SLO-Regular.ttf') format('truetype');
+    src:url('https://cdn.jsdelivr.net/gh/OskarNik33/fanfara-program@main/VCR_OSD_MONO_SLO-Regular-v2.ttf') format('truetype');
     font-display:swap;
   }
   :root{
@@ -40,10 +40,23 @@
   #bio{font-family:'Coda',Georgia,serif;font-size:15px;line-height:1.6;
     color:#d8d2bf;max-width:46ch;margin:0 0 24px;white-space:pre-line;transition:opacity .18s,transform .28s}
   .fade-out #name,.fade-out #role,.fade-out #talk,.fade-out #bio{opacity:0;transform:translateY(6px)}
-  #schedule{position:absolute;left:3%;top:50%;transform:translateY(-50%);width:20%;list-style:none;margin:0;padding:0;border-top:1px solid rgba(237,234,217,.25);pointer-events:auto}
-  #schedule li{display:flex;gap:12px;padding:8px 0;font-size:12px;color:#8d8a7c;
-    border-bottom:1px solid rgba(237,234,217,.12);cursor:pointer;transition:color .2s}
-  #schedule li:hover,#schedule li.active{color:var(--mayo)}
+  /* Channel list: left of the TV, large and easy to read */
+  #sched{position:absolute;left:3%;top:50%;transform:translateY(-50%);width:27%;pointer-events:auto;text-shadow:0 1px 10px rgba(0,0,0,.95)}
+  #sched-head{font-family:'VCR','Courier New',monospace;font-size:clamp(14px,1.25vw,20px);
+    letter-spacing:.06em;color:var(--zenf);padding:0 12px 12px 16px;border-bottom:2px solid var(--zenf)}
+  #schedule{list-style:none;margin:0;padding:0;max-height:78vh;overflow-y:auto;scrollbar-width:thin;
+    scrollbar-color:rgba(237,234,217,.3) transparent}
+  #schedule li{display:grid;grid-template-columns:4.6em 1fr;align-items:center;gap:8px;
+    padding:clamp(7px,1.05vh,14px) 12px clamp(7px,1.05vh,14px) 16px;
+    border-bottom:1px solid rgba(237,234,217,.18);border-left:4px solid transparent;
+    color:#a9a69a;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+  #schedule li .t{font-family:'VCR','Courier New',monospace;font-size:clamp(15px,1.4vw,22px);color:var(--zenf)}
+  #schedule li .t.tba{color:#8d8a7c}
+  #schedule li .n{font-family:'VCR','Courier New',monospace;font-size:clamp(15px,1.35vw,22px);line-height:1.15}
+  #schedule li .c{display:block;font-size:clamp(11px,.95vw,14px);letter-spacing:.12em;color:#8d8a7c;margin-bottom:3px}
+  #schedule li:hover{color:var(--mayo)}
+  #schedule li.active{color:var(--mayo);background:rgba(237,234,217,.08);border-left-color:var(--ketchup)}
+  #schedule li.active .t{color:var(--mayo)}
 
   #hint{position:absolute;bottom:3%;left:0;right:0;text-align:center;font-size:11px;
     letter-spacing:.18em;text-transform:uppercase;color:rgba(237,234,217,.5);pointer-events:none}
@@ -59,7 +72,8 @@
   @media (max-width:700px){
     #frame{width:100vw}
     #panel{position:static;transform:none;width:auto;max-height:none;overflow:visible;padding:20px 16px;text-shadow:none}
-    #schedule{position:static;transform:none;width:auto;margin:0 16px 24px}
+    #sched{position:static;transform:none;width:auto;margin:0 16px 24px}
+    #schedule{max-height:none;overflow:visible}
     #hint{display:none}
   }
 </style>
@@ -79,7 +93,10 @@
     <div id="talk"></div>
     <p id="bio"></p>
   </div>
-  <ul id="schedule"></ul>
+  <div id="sched">
+    <div id="sched-head">PROGRAM &nbsp;09:00 — 17:00</div>
+    <ul id="schedule"></ul>
+  </div>
   <div id="hint">scroll to change channel</div>
 </div>
 
@@ -219,12 +236,6 @@
         ctx.fillText(initials, w*.5, h*.42 + 6);
       }
 
-      // name bar
-      ctx.fillStyle = 'rgba(26,27,27,0.78)'; ctx.fillRect(0, h - 56, w, 56);
-      ctx.fillStyle = '#EDEAD9'; ctx.font = '24px VCR, "Courier New", monospace';
-      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(s.name, 16, h - 22);
-
       // channel number (top left) + on-air (top right)
       ctx.font = '22px VCR, "Courier New", monospace';
       ctx.fillStyle = 'rgba(237,234,217,0.95)';
@@ -324,9 +335,11 @@
       SPEAKERS.forEach((s, i) => {
         const li = document.createElement('li');
         li.className = i === currentIndex ? 'active' : '';
-        li.innerHTML = `<span>CH ${String(i+1).padStart(2,'0')}</span><span>${s.name}</span>`;
+        li.innerHTML = `<span class="t${s.time ? '' : ' tba'}">${s.time || 'TBA'}</span><span class="n"><span class="c">CH ${String(i+1).padStart(2,'0')}</span>${s.name}</span>`;
         li.addEventListener('click', () => { if (!isTransitioning) switchChannel(i); });
         scheduleEl.appendChild(li);
+        // desktop only: keep the playing channel visible inside the short list (on phone it would scroll the page)
+        if (i === currentIndex && window.innerWidth > 700) li.scrollIntoView({ block: 'nearest' });
       });
     }
 
