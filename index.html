@@ -39,7 +39,9 @@
     padding:12px 0 6px;pointer-events:auto}
   #sched-head{text-shadow:none;font-family:'VCR','Courier New',monospace;font-size:clamp(13px,1.9vh,22px);
     letter-spacing:.06em;color:var(--zenf);padding:0 16px 10px;border-bottom:2px solid var(--zenf)}
-  #schedule{list-style:none;margin:0;padding:0}
+  #schedule{list-style:none;margin:0;padding:0;max-height:calc(100vh - var(--topbar) - 150px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}
+  #schedule::-webkit-scrollbar{display:none}
   #schedule li{display:grid;grid-template-columns:4.6em 1fr;align-items:center;gap:8px;
     padding:clamp(4px,.9vh,12px) 16px;border-bottom:1px solid rgba(237,234,217,.2);
     color:var(--mayo);cursor:pointer;transition:background .15s,color .15s}
@@ -84,6 +86,7 @@
     #tvframe{width:172%;left:-37%;top:42%}
     #panel{order:1;position:static;transform:none;width:auto;max-height:none;overflow:visible;padding:20px 16px;background:none}
     #sched{order:2;position:static;transform:none;width:auto;margin:0 16px 24px;background:none}
+    #schedule{max-height:none;overflow:visible}
     #schedule li{padding:10px 0}
     #hint{display:none}
   }
@@ -232,6 +235,7 @@
         li.innerHTML = `<span class="t${s.time ? '' : ' tba'}">${s.time || 'TBA'}</span><span class="n"><span class="c">CH ${String(i+1).padStart(2,'0')}</span>${s.name}</span>`;
         li.addEventListener('click', () => { if (!isTransitioning) switchChannel(i); });
         scheduleEl.appendChild(li);
+        if (i === currentIndex && window.innerWidth > 700) li.scrollIntoView({ block: 'nearest' });
       });
     }
 
@@ -273,7 +277,7 @@
       switchChannel((currentIndex + dir + SPEAKERS.length) % SPEAKERS.length);
     }
     window.addEventListener('wheel', (e) => {
-      if (e.target.closest && e.target.closest('#panel')) return;
+      if (e.target.closest && e.target.closest('#panel, #schedule')) return;
       if (window.innerWidth > 700) e.preventDefault();
       step(e.deltaY > 0 ? 1 : -1);
     }, { passive: false });
@@ -281,7 +285,7 @@
     let touchY = null, touchOnText = false;
     window.addEventListener('touchstart', (e) => {
       touchY = e.touches[0].clientY;
-      touchOnText = !!(e.target.closest && e.target.closest('#panel'));
+      touchOnText = !!(e.target.closest && e.target.closest('#panel, #schedule'));
     }, { passive: true });
     window.addEventListener('touchmove', (e) => {
       if (touchY === null || touchOnText) return;
