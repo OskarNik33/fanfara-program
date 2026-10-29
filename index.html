@@ -51,6 +51,11 @@
   #schedule li .c{display:block;font-size:clamp(10px,1.25vh,14px);letter-spacing:.12em;margin-bottom:2px;opacity:.8}
   #schedule li:hover{background:rgba(222,144,0,.45)}
   #schedule li.active{background:var(--zenf);color:var(--concrete)}
+  /* hosts ("host": true in speakers.json) use teal instead of yellow */
+  #schedule li.host:hover{background:rgba(23,106,120,.6)}
+  #schedule li.host.active{background:var(--teal);color:#fff}
+  #schedule li.host.active .t{color:#fff}
+  #name.host{background:var(--teal);color:#fff}
   #schedule li.active .t{color:var(--concrete)}
   #schedule li.active .c{opacity:1}
 
@@ -103,7 +108,7 @@
   </div>
 
   <div id="sched">
-    <div id="sched-head">PROGRAM &nbsp;*09:00 — 17:00*</div>
+    <div id="sched-head">PROGRAM &nbsp;09:00 — 17:00</div>
     <ul id="schedule"></ul>
   </div>
 
@@ -221,6 +226,7 @@
       const s = SPEAKERS[index];
       panelEl.scrollTop = 0;
       nameEl.textContent = s.name;
+      nameEl.classList.toggle('host', !!s.host);
       roleEl.textContent = s.role;
       talkEl.textContent = s.talk || '';
       bioEl.textContent = s.bio;
@@ -231,7 +237,7 @@
       scheduleEl.innerHTML = '';
       SPEAKERS.forEach((s, i) => {
         const li = document.createElement('li');
-        li.className = i === currentIndex ? 'active' : '';
+        li.className = (i === currentIndex ? 'active' : '') + (s.host ? ' host' : '');
         li.innerHTML = `<span class="t${s.time ? '' : ' tba'}">${s.time || 'TBA'}</span><span class="n"><span class="c">CH ${String(i+1).padStart(2,'0')}</span>${s.name}</span>`;
         li.addEventListener('click', () => { if (!isTransitioning) switchChannel(i); });
         scheduleEl.appendChild(li);
