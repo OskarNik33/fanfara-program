@@ -1,6 +1,15 @@
 {
   "speakers": [
     {
+      "name": "VESNA PONORAC",
+      "role": "Voditeljica in igralka",
+      "talk": "Voditeljica Fanfare",
+      "bio": "",
+      "portrait": "portraits/Vesna-Ponorac.jpg",
+      "c1": "#DE9000",
+      "c2": "#C62000"
+    },
+    {
       "name": "LARA BEGIČ",
       "role": "Manager - Social Media at Parfums Christian Dior",
       "talk": "Kako združiti popolnost luksuza z nepredvidljivostjo digitalnega sveta?",
@@ -17,15 +26,6 @@
       "portrait": "portraits/Teodora-Jeremic.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
-    },
-    {
-      "name": "BOJAN CVJETIĆANIN",
-      "role": "Lead singer at Joker out",
-      "talk": "Kako graditi osebno blagovno znamko, ko ta preseže meje domačega odra?",
-      "bio": "Bojan Cvjetićanin je frontman skupine Joker Out in eden vidnejših obrazov svoje generacije na slovenski glasbeni sceni. S svojo karizmo je v nekaj letih presegel domače meje ter ustvaril prepoznavno blagovno znamko, ki jo danes pozna tudi mednarodno občinstvo. Poslušalci iz tujine se zaradi njihove glasbe učijo slovenskih besedil ter tako odkrivajo slovenski jezik in kulturo, na kar je Bojan izjemno ponosen.\n\nLeta 2023 so Joker Out s pesmijo 'Carpe Diem' Slovenijo zastopali na Evroviziji in istega leta razprodali dvorano Stožice. Ob deseti obletnici skupine so na velikem koncertu Karneval privabili več kot 17.000 obiskovalcev in slabemu vremenu navkljub ustvarili magičen večer.\n\nNa Fanfari nas bo Bojan popeljal v svet grajenja osebne blagovne znamke. Spoznali bomo, kako se spopasti s slavo, pričakovanji in nenazadnje prepoznavnostjo, ki prinese večjo odgovornost. Prav slednja je morda najpomembnejši vidik vpliva, ki ga potrebuje Novi Val.",
-      "portrait": "portraits/Bojan-Cvjeticanin.jpg",
-      "c1": "#C62000",
-      "c2": "#242925"
     },
     {
       "name": "TAMIR MORRIS POTOKAR GRAYS",
@@ -100,6 +100,24 @@
       "c2": "#1A1B1B"
     },
     {
+      "name": "NUŠA LESAR",
+      "role": "Voditeljica in novinarka",
+      "talk": "",
+      "bio": "",
+      "portrait": "portraits/Nusa-Lesar.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "BOJAN CVJETIĆANIN",
+      "role": "Lead singer at Joker out",
+      "talk": "Kako graditi osebno blagovno znamko, ko ta preseže meje domačega odra?",
+      "bio": "Bojan Cvjetićanin je frontman skupine Joker Out in eden vidnejših obrazov svoje generacije na slovenski glasbeni sceni. S svojo karizmo je v nekaj letih presegel domače meje ter ustvaril prepoznavno blagovno znamko, ki jo danes pozna tudi mednarodno občinstvo. Poslušalci iz tujine se zaradi njihove glasbe učijo slovenskih besedil ter tako odkrivajo slovenski jezik in kulturo, na kar je Bojan izjemno ponosen.\n\nLeta 2023 so Joker Out s pesmijo 'Carpe Diem' Slovenijo zastopali na Evroviziji in istega leta razprodali dvorano Stožice. Ob deseti obletnici skupine so na velikem koncertu Karneval privabili več kot 17.000 obiskovalcev in slabemu vremenu navkljub ustvarili magičen večer.\n\nNa Fanfari nas bo Bojan popeljal v svet grajenja osebne blagovne znamke. Spoznali bomo, kako se spopasti s slavo, pričakovanji in nenazadnje prepoznavnostjo, ki prinese večjo odgovornost. Prav slednja je morda najpomembnejši vidik vpliva, ki ga potrebuje Novi Val.",
+      "portrait": "portraits/Bojan-Cvjeticanin.jpg",
+      "c1": "#C62000",
+      "c2": "#242925"
+    },
+    {
       "name": "KATARINA ČAS",
       "role": "Mednarodna in slovenska igralka",
       "talk": "Kdaj obraz postane blagovna znamka?",
@@ -112,17 +130,8 @@
       "name": "JAKA REPANŠEK",
       "role": "Strokovnjak za medijsko in oglaševalsko pravo, Predsednik Oglaševalskega razsodišča v mandatih 2020-2025",
       "talk": "Kaj se zgodi, ko igra prehiti pravila?",
-      "bio": "Mag. Jaka Repanšek je strokovnjak z več kot 20-letnimi izkušnjami na področju tehnologije, medijev, oglaševanja in interneta.\n\nJe ustanovitelj svetovalne družbe RePublis, ki se ukvarja s pravnimi in regulativnimi vprašanji na področju medijev in tehnologije. Šest let je vodil Oglaševalsko razsodišče in usmerjal prenovo Slovenskega oglaševalskega kodeksa. ⚖️ V zadnjih letih se posveča predvsem digitalni regulativi, varstvu zasebnosti ter etičnim izzivom sodobnega oglaševanja.\n\nNa Fanfari bo Jaka predstavil pomen samoregulacije pri zagotavljanju odgovornega in etičnega oglaševanja. Razložil bo, kako nove tehnologije in spreminjajoče se oglaševalske prakse ustvarjajo plodna tla za izzive, ki vzklijejo iz sprememb. Slednji zahtevajo budno oko, ki tudi v najhitrejši igri loči drzno potezo od napačne.",
+      "bio": "Mag. Jaka Repanšek je strokovnjak z več kot 20-letnimi izkušnjami na področju tehnologije, medijev, oglaševanja in interneta.\n\nJe ustanovitelj svetovalne družbe RePublis, ki se ukvarja s pravnimi in regulativnimi vprašanji na področju medijev in tehnologije. Šest let je vodil Oglaševalsko razsodišče in usmerjal prenovo Slovenskega oglaševalskega kodeksa. V zadnjih letih se posveča predvsem digitalni regulativi, varstvu zasebnosti ter etičnim izzivom sodobnega oglaševanja.\n\nNa Fanfari bo Jaka predstavil pomen samoregulacije pri zagotavljanju odgovornega in etičnega oglaševanja. Razložil bo, kako nove tehnologije in spreminjajoče se oglaševalske prakse ustvarjajo plodna tla za izzive, ki vzklijejo iz sprememb. Slednji zahtevajo budno oko, ki tudi v najhitrejši igri loči drzno potezo od napačne.",
       "portrait": "portraits/Jaka-Repansek.jpg",
-      "c1": "#176A78",
-      "c2": "#1A1B1B"
-    },
-    {
-      "name": "NUŠA LESAR",
-      "role": "Voditeljica in novinarka",
-      "talk": "",
-      "bio": "",
-      "portrait": "portraits/Nusa-Lesar.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
     },
@@ -140,9 +149,9 @@
       "role": "Specialist za kibernetske varnostne rešitve",
       "talk": "Vaša največja varnostna luknja je verjetno v vašem žepu.\n\nDemonstracija v živo: kako napadalci zlorabijo mobilne naprave in kako jih ustaviti v realnem času.",
       "bio": "Pametni telefon je postal naše nepogrešljivo delovno orodje, hkrati pa tudi ena od privlačnejših tarč za kibernetske napadalce. Kako hitro lahko na videz nedolžna aplikacija ali sporočilo ogrozi naše podatke?\n\nLuka Bijelić, specialist za kibernetske varnostne rešitve pri Telekomu Slovenije, bo skozi demonstracijo v živo razkril, kako napadalci izkoriščajo ranljivosti mobilnih naprav in kako lahko pridobijo dostop do poslovnih podatkov. Z dolgoletnimi izkušnjami v IKT-sektorju sodeluje pri projektih kibernetske zaščite državnih institucij in kritične infrastrukture, posebno pozornost pa namenja zaščiti in upravljanju mobilnih naprav.\n\nNa predavanju bomo spoznali najpogostejše mobilne grožnje, spremljali prikaz prevzema naprave v varnem testnem okolju ter izvedeli, kako lahko sodobne varnostne rešitve napade zaznajo in ustavijo v realnem času.\n\nPripravi se na drugačen pogled na napravo, ki jo vsak dan nosiš v žepu. Morda je čas, da preveriš, ali ji zaupaš preveč.",
-      "portrait": "",
-      "c1": "#DE9000",
-      "c2": "#C62000"
+      "portrait": "portraits/Luka-Bijelic.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
     }
   ]
 }
