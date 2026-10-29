@@ -6,6 +6,7 @@
       "talk": "Voditeljica Fanfare",
       "bio": "",
       "portrait": "portraits/Vesna-Ponorac.jpg",
+      "host": true,
       "c1": "#DE9000",
       "c2": "#C62000"
     },
@@ -105,6 +106,7 @@
       "talk": "",
       "bio": "",
       "portrait": "portraits/Nusa-Lesar.jpg",
+      "host": true,
       "c1": "#176A78",
       "c2": "#1A1B1B"
     },
