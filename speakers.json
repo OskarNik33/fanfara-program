@@ -1,53 +1,18 @@
 {
   "speakers": [
     {
-      "name": "VESNA PONORAC",
-      "role": "Voditeljica in igralka",
-      "talk": "Voditeljica Fanfare",
-      "bio": "",
-      "portrait": "portraits/Vesna-Ponorac.jpg",
-      "host": true,
-      "c1": "#DE9000",
-      "c2": "#C62000"
-    },
-    {
-      "name": "LARA BEGIČ",
-      "role": "Manager - Social Media at Parfums Christian Dior",
-      "talk": "Kako združiti popolnost luksuza z nepredvidljivostjo digitalnega sveta?",
-      "bio": "Lara Begič je global social media managerka pri Dior Beauty. Pri svojem delu se vsakodnevno ukvarja prav s tem vprašanjem. V Parizu skrbi za strategijo družbenih omrežij ene najbolj prepoznavnih luksuznih lepotnih znamk na svetu, pri čemer išče načine, kako globalno znamko približati sodobnemu občinstvu.\n\nSvojo kariero je začela pri Publicis Groupe, gradila izkušnje na področju vplivnostnega trženja in sodelovala z različnimi globalnimi znamkami. Danes svoje znanje združuje z delom v okolju, kjer se morajo tudi najbolj uveljavljene znamke nenehno prilagajati novim trendom, platformam in načinom komuniciranja.\n\nNa Fanfari bo Lara spregovorila o tem, kako se luksuzne znamke prilagajajo kulturi TikToka, kjer popolna produkcija ni več edina pot do pozornosti. Raziskali bomo, kako združiti prefinjenost luksuza s spontanostjo digitalnega sveta, kako razumeti nove oblike uporabniške pozornosti in zakaj morajo tudi najbolj tradicionalne znamke znati stopiti iz cone udobja.",
-      "portrait": "portraits/Lara-Begic.jpg",
-      "c1": "#DE9000",
-      "c2": "#C62000"
-    },
-    {
-      "name": "TEODORA JEREMIĆ",
-      "role": "Editorial Director at Vogue Adria",
-      "talk": "Kako pri življenju ohraniti print v svetu, kjer digital narekuje pravila igre?",
-      "bio": "V časih neskončnega scrollanja in vsebin, ki so na zaslonu le nekaj sekund, se lahko hitro zdi, da za print ni več prostora. A kljub napovedim o njegovem koncu se tiskane publikacije vračajo kot zbirateljski kos in predmet z vsebino.\n\nTeodora Jeremič je urednica, pisateljica in kuratorka iz Beograda, ki svoje delo gradi na presečišču sodobne umetnosti, mode in založništva. Sodelovala je s številnimi publikacijami in revijami, delovala kot vodja galerije in umetniška producentka pri Hestia Art Residency Exhibitions Bureau ter v Muzeju sodobne umetnosti v Beogradu. Danes je Editorial Director revije Vogue Adria, za katero tudi piše.\n\nNa Fanfari bo Teodora odprla vprašanje, zakaj print kljub vzponu digitalnih medijev še vedno ostaja relevanten. Govorila bo o tem, kaj ljudje iščejo v fizičnih publikacijah, zakaj prinašajo občutek teže trenutka ter zakaj printu za preživetje ni treba tekmovati z digitalnim svetom. Morda njegova prihodnost ni v tem, da postane hitrejši, temveč v tem, da ostane drugačen.",
-      "portrait": "portraits/Teodora-Jeremic.jpg",
+      "name": "IRENA DEŽELAK",
+      "time": "09:15",
+      "role": "Founder and director at AKADEMIJA USPEHA GROUP",
+      "talk": "Si upaš voditi drugače?",
+      "bio": "Mag. Irena Deželak je mednarodna predavateljica, poslovna coachinja in direktorica Akademije Uspeha Group z več kot 25 leti izkušenj v svetu vodenja, komunikacije in razvoja ljudi.\n\nNjena predavanja, seminarje in delavnice je obiskalo že več kot 50.000 udeležencev na več kot 4.000 dogodkih. Kot ena izmed le 40 certificiranih PCM Master Trainer strokovnjakov na svetu sodi v izbrani mednarodni krog ekspertov za Process Communication Model razvit s strani NASE.\n\nNa Fanfari bo Irena pokazala kako prevzeti vajeti vodenja. Predala bo misel, da ljudje ne delujejo po formulah in da pristop, ki pri enem deluje odlično, lahko pri drugem povzroči povsem nasproten učinek. Včasih največji leadership izziv ni v tem, da vemo, kaj narediti, ampak da si upamo narediti drugače.",
+      "portrait": "portraits/Irena-Dezelak.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
     },
     {
-      "name": "TAMIR MORRIS POTOKAR GRAYS",
-      "role": "Kreativni direktor, oblikovalec, fotograf in ustanovitelj kreativnega huba .raw lab d.o.o.",
-      "talk": "Kaj nam ostane, ko portfolio ni več dovolj?",
-      "bio": "Tamir Morris Potokar Grays je ustanovitelj in kreativni vodja laboratorija .raw, studia, ki povezuje oblikovanje in marketing. Ta od leta 2020 oblikuje za številne znamke, med drugim Db, Samsung, Knauf, Equa in Oro Water. Njegovo delo je našlo pot do številnih medijev in platform, kot so The Times, GQ, Vogue, Highsnobiety in The Brand Identity, pojavilo pa se je tudi na velikem platnu.\n\nPred ustanovitvijo studia je Tamir izkušnje nabiral v logistiki za Rolls-Royce Motor Cars in na področju marketinga v Londonu. Poleg oblikovalskega sveta je bil vpet tudi v druge projekte. V Ljubljani je ustanovil specializirano kavarno .store ter soustanovil Bagel Embassy.\n\nNa Fanfari bo Tamir razkril, kaj najboljši svetovni studii iščejo pri mladih dizajnerjih. Govoril bo o prihodnosti oblikovanja in o tem, zakaj popoln portfolio še ne odpira vseh vrat. Saj vendarle drži, da moraš, preden stopiš skoznje, poznati smer, v katero si namenjen.",
-      "portrait": "portraits/Tamir-Morris-Potokar-Grays.jpg",
-      "c1": "#DE9000",
-      "c2": "#C62000"
-    },
-    {
-      "name": "CORNELIUS WALKER",
-      "role": "Režiser nominiran za oskarja",
-      "talk": "Kaj se zgodi, ko se prepustimo lepoti nevednosti?",
-      "bio": "Cornelius Walker je z oskarjem nominirani ustvarjalec, ki deluje na področju filma in televizijske produkcije. Njegova dela zaznamujeta čustveno prizemljeno pripovedovanje ter filmska ambicija.\n\nNominacijo za oskarja je prejel za film Black Sheep, ki je bil nominiran tudi za nagradi Grierson in IDA. Režiral je BFI financirani film Talk, sodeloval pri serijah Supacell in The Fear Index ter pri produkcijah Bridgerton in The Witcher.\n\nNa Fanfari bo Cornelius govoril o svojem pogledu na pripovedovanje zgodb, ki si ga je ustvaril ob delovanju na mnogih narativnih projektih. Odprl bo razmislek o tem, ali je nevednost lahko prednost pri pripovedovanju, saj ravno v neznanem odkrijemo tisto, česar sicer ne bi našli nikoli.",
-      "portrait": "portraits/Cornelius-Walker.jpg",
-      "c1": "#DE9000",
-      "c2": "#C62000"
-    },
-    {
       "name": "JULIJA HORVAT ZEILHOFER",
+      "time": "09:35",
       "role": "Global Product Manager / Globalna Produktna Managerka pri adidas Originals",
       "talk": "Kaj vse se mora zgoditi, preden produkt osvoji police trgovin?",
       "bio": "Julija Horvat Zeilhofer je Global Product Manager pri adidas Originals. Na sedežu znamke v Nemčiji soustvarja produktne strategije in kolekcije za evropski in globalni trg.\n\nTrenutno vodi ekskluzivne produktne linije za nekatere ključne evropske partnerje, kot so JD Sports, Zalando in Snipes. Obenem sodeluje tudi pri razvoju produktov od prvih idej do trenutka, ko ti ugledajo svetlobo trga.\n\nNa Fanfari bo Julija pokazala, kakšno vlogo ima Product Manager pri povezovanju kreativnosti, potreb potrošnikov in poslovne strategije. Skozi svojo kariero v tujini bo razkrila ozadje nastajanja produktov za globalne športne znamke. Saj ni dovolj, da znamo gledati v ekran. Pomembno je imeti oči na pecljih, ki sežejo onkraj našega horizonta.",
@@ -56,16 +21,18 @@
       "c2": "#1A1B1B"
     },
     {
-      "name": "IVICA KOSTELIĆ",
-      "role": "Eden najuspešnejših alpskih smučarjev",
-      "talk": "Res vedno zmagaš takrat, ko prvi prečkaš ciljno črto?",
-      "bio": "Ivica Kostelić je eden najuspešnejših hrvaških alpskih smučarjev. V svoji bogati karieri je osvojil številne kolajne in jo nemalokrat, tudi po tekmi, znova ubral po stopničkah navzgor.\n\nOsvojil je štiri srebrne olimpijske medalje ter kar 26 zmag v svetovnem pokalu. Leta 2011 je osvojil veliki kristalni globus. Kljub vrhunski karieri se je soočal tudi z izzivi, ki so od njega zahtevali veliko mero vztrajnosti in samodiscipline.\n\nNa Fanfari bo Ivica pripovedoval o zmagi in porazu. Razmišljal bo o tem, kaj nam pomenita in koliko poguma potrebujemo, da znova poiščemo cilj po porazu in celo po zmagi.",
-      "portrait": "portraits/Ivica-Kostelic.jpg",
+      "name": "IRENA FONDA",
+      "time": "09:55",
+      "role": "doktorica molekularne biologije in biokemije. Direktorica in soustanoviteljica Zavoda YouSea, zavoda za ohranjanje biodiverzitete morja, ter Fonda.si d.o.o.",
+      "talk": "Kako globoko sega dobra znamka?",
+      "bio": "Irena Fonda je doktorica molekularne biologije in biokemije ter prejemnica številnih priznanj za študijske dosežke. Obenem je direktorica in soustanoviteljica Fonda.si d.o.o. ter Zavoda YouSea.\n\nIz prve ideje za ribogojnico je zrasla prepoznavna blagovna znamka Fonda, zgrajena na jasnih vrednotah in zaupanju kupcev. Ljubezen do morja jo je vodila tudi do ustanovitve Zavoda YouSea, ki skrbi za ohranjanje morskega ekosistema.\n\nNa Fanfari nas bo Irena potopila v svet blagovne znamke, ki ne odraža le izdelka, temveč tudi vrednote ljudi, ki predano stojijo za njo. Popeljala nas bo na pot do morskega dna in vendar proti vrhu.",
+      "portrait": "portraits/Irena-Fonda.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
     },
     {
       "name": "KATJA PETRIN DORNIK",
+      "time": "10:50",
       "role": "One of Slovenia’s most awarded Creative Directors.",
       "talk": "Od briefa do kampanje. In o marsičem, kar se zgodi vmes.",
       "bio": "Katja Petrin Dornik je kreativna direktorica pri Agenciji 101, v svoji dolgoletni karieri pa je soustvarila mnoge najvidnejše oglaševalske kampanje pri nas. Svojo kreativno pot je gradila tudi pri agencijah Luna/TBWA, Grey (zdaj Shift) ter Herman in partnerji.\n\nNa Fanfari bo skupaj z Majo Kalan predstavila zakulisje jubilejne kampanje Mlečno je srečno, s katero Ljubljanske mlekarne letos obeležujejo 70 let. Razkrila bo, kako se lotiti kreativnih izzivov, iz omejitev ustvariti priložnosti in razviti idejo v kampanjo, ki se ne konča z eno piko, ampak odpre prostor za tri.",
@@ -75,6 +42,7 @@
     },
     {
       "name": "MAJA KALAN",
+      "time": "10:50",
       "role": "vodja korporativnega komuniciranja in družbene odgovornosti v Ljubljanskih mlekarnah",
       "talk": "Od briefa do kampanje. In o marsičem, kar se zgodi vmes.",
       "bio": "Maja Kalan je vodja korporativnega komuniciranja in družbene odgovornosti v Ljubljanskih mlekarnah. Svojo kariero je začela kot novinarka, pozneje prevzela tudi uredniške vloge, nato pa svojo pot nadaljevala v korporativnem komuniciranju. Pod njenim vodstvom so komunikacijski projekti podjetja trikrat prejeli nagrado Prizma za komunikacijsko odličnost.\n\nNa Fanfari bo skupaj s Katjo Petrin Dornik predstavila zakulisje jubilejne kampanje Mlečno je srečno, s katero Ljubljanske mlekarne letos obeležujejo 70 let. Razkrila bo, kako povezati zgodbo znamke s kreativno idejo, iz omejitev ustvariti priložnosti in razviti kampanjo, ki se ne konča z eno piko, ampak odpre prostor za tri.",
@@ -83,35 +51,38 @@
       "c2": "#1A1B1B"
     },
     {
-      "name": "IRENA FONDA",
-      "role": "doktorica molekularne biologije in biokemije. Direktorica in soustanoviteljica Zavoda YouSea, zavoda za ohranjanje biodiverzitete morja, ter Fonda.si d.o.o.",
-      "talk": "Kako globoko sega dobra znamka?",
-      "bio": "Irena Fonda je doktorica molekularne biologije in biokemije ter prejemnica številnih priznanj za študijske dosežke. Obenem je direktorica in soustanoviteljica Fonda.si d.o.o. ter Zavoda YouSea.\n\nIz prve ideje za ribogojnico je zrasla prepoznavna blagovna znamka Fonda, zgrajena na jasnih vrednotah in zaupanju kupcev. Ljubezen do morja jo je vodila tudi do ustanovitve Zavoda YouSea, ki skrbi za ohranjanje morskega ekosistema.\n\nNa Fanfari nas bo Irena potopila v svet blagovne znamke, ki ne odraža le izdelka, temveč tudi vrednote ljudi, ki predano stojijo za njo. Popeljala nas bo na pot do morskega dna in vendar proti vrhu.",
-      "portrait": "portraits/Irena-Fonda.jpg",
-      "c1": "#176A78",
-      "c2": "#1A1B1B"
+      "name": "LARA BEGIČ",
+      "time": "11:15",
+      "role": "Manager - Social Media at Parfums Christian Dior",
+      "talk": "Kako združiti popolnost luksuza z nepredvidljivostjo digitalnega sveta?",
+      "bio": "Lara Begič je global social media managerka pri Dior Beauty. Pri svojem delu se vsakodnevno ukvarja prav s tem vprašanjem. V Parizu skrbi za strategijo družbenih omrežij ene najbolj prepoznavnih luksuznih lepotnih znamk na svetu, pri čemer išče načine, kako globalno znamko približati sodobnemu občinstvu.\n\nSvojo kariero je začela pri Publicis Groupe, gradila izkušnje na področju vplivnostnega trženja in sodelovala z različnimi globalnimi znamkami. Danes svoje znanje združuje z delom v okolju, kjer se morajo tudi najbolj uveljavljene znamke nenehno prilagajati novim trendom, platformam in načinom komuniciranja.\n\nNa Fanfari bo Lara spregovorila o tem, kako se luksuzne znamke prilagajajo kulturi TikToka, kjer popolna produkcija ni več edina pot do pozornosti. Raziskali bomo, kako združiti prefinjenost luksuza s spontanostjo digitalnega sveta, kako razumeti nove oblike uporabniške pozornosti in zakaj morajo tudi najbolj tradicionalne znamke znati stopiti iz cone udobja.",
+      "portrait": "portraits/Lara-Begic.jpg",
+      "c1": "#DE9000",
+      "c2": "#C62000"
     },
     {
-      "name": "IRENA DEŽELAK",
-      "role": "Founder and director at AKADEMIJA USPEHA GROUP",
-      "talk": "Si upaš voditi drugače?",
-      "bio": "Mag. Irena Deželak je mednarodna predavateljica, poslovna coachinja in direktorica Akademije Uspeha Group z več kot 25 leti izkušenj v svetu vodenja, komunikacije in razvoja ljudi.\n\nNjena predavanja, seminarje in delavnice je obiskalo že več kot 50.000 udeležencev na več kot 4.000 dogodkih. Kot ena izmed le 40 certificiranih PCM Master Trainer strokovnjakov na svetu sodi v izbrani mednarodni krog ekspertov za Process Communication Model razvit s strani NASE.\n\nNa Fanfari bo Irena pokazala kako prevzeti vajeti vodenja. Predala bo misel, da ljudje ne delujejo po formulah in da pristop, ki pri enem deluje odlično, lahko pri drugem povzroči povsem nasproten učinek. Včasih največji leadership izziv ni v tem, da vemo, kaj narediti, ampak da si upamo narediti drugače.",
-      "portrait": "portraits/Irena-Dezelak.jpg",
-      "c1": "#176A78",
-      "c2": "#1A1B1B"
+      "name": "TAMIR MORRIS POTOKAR GRAYS",
+      "time": "11:40",
+      "role": "Kreativni direktor, oblikovalec, fotograf in ustanovitelj kreativnega huba .raw lab d.o.o.",
+      "talk": "Kaj nam ostane, ko portfolio ni več dovolj?",
+      "bio": "Tamir Morris Potokar Grays je ustanovitelj in kreativni vodja laboratorija .raw, studia, ki povezuje oblikovanje in marketing. Ta od leta 2020 oblikuje za številne znamke, med drugim Db, Samsung, Knauf, Equa in Oro Water. Njegovo delo je našlo pot do številnih medijev in platform, kot so The Times, GQ, Vogue, Highsnobiety in The Brand Identity, pojavilo pa se je tudi na velikem platnu.\n\nPred ustanovitvijo studia je Tamir izkušnje nabiral v logistiki za Rolls-Royce Motor Cars in na področju marketinga v Londonu. Poleg oblikovalskega sveta je bil vpet tudi v druge projekte. V Ljubljani je ustanovil specializirano kavarno .store ter soustanovil Bagel Embassy.\n\nNa Fanfari bo Tamir razkril, kaj najboljši svetovni studii iščejo pri mladih dizajnerjih. Govoril bo o prihodnosti oblikovanja in o tem, zakaj popoln portfolio še ne odpira vseh vrat. Saj vendarle drži, da moraš, preden stopiš skoznje, poznati smer, v katero si namenjen.",
+      "portrait": "portraits/Tamir-Morris-Potokar-Grays.jpg",
+      "c1": "#DE9000",
+      "c2": "#C62000"
     },
     {
-      "name": "NUŠA LESAR",
-      "role": "Voditeljica in novinarka",
-      "talk": "",
-      "bio": "",
-      "portrait": "portraits/Nusa-Lesar.jpg",
-      "host": true,
+      "name": "LUKA BIJELIĆ",
+      "time": "12:10",
+      "role": "Specialist za kibernetske varnostne rešitve",
+      "talk": "Vaša največja varnostna luknja je verjetno v vašem žepu.\n\nDemonstracija v živo: kako napadalci zlorabijo mobilne naprave in kako jih ustaviti v realnem času.",
+      "bio": "Pametni telefon je postal naše nepogrešljivo delovno orodje, hkrati pa tudi ena od privlačnejših tarč za kibernetske napadalce. Kako hitro lahko na videz nedolžna aplikacija ali sporočilo ogrozi naše podatke?\n\nLuka Bijelić, specialist za kibernetske varnostne rešitve pri Telekomu Slovenije, bo skozi demonstracijo v živo razkril, kako napadalci izkoriščajo ranljivosti mobilnih naprav in kako lahko pridobijo dostop do poslovnih podatkov. Z dolgoletnimi izkušnjami v IKT-sektorju sodeluje pri projektih kibernetske zaščite državnih institucij in kritične infrastrukture, posebno pozornost pa namenja zaščiti in upravljanju mobilnih naprav.\n\nNa predavanju bomo spoznali najpogostejše mobilne grožnje, spremljali prikaz prevzema naprave v varnem testnem okolju ter izvedeli, kako lahko sodobne varnostne rešitve napade zaznajo in ustavijo v realnem času.\n\nPripravi se na drugačen pogled na napravo, ki jo vsak dan nosiš v žepu. Morda je čas, da preveriš, ali ji zaupaš preveč.",
+      "portrait": "portraits/Luka-Bijelic.jpg",
       "c1": "#176A78",
       "c2": "#1A1B1B"
     },
     {
       "name": "BOJAN CVJETIĆANIN",
+      "time": "13:30",
       "role": "Lead singer at Joker out",
       "talk": "Kako graditi osebno blagovno znamko, ko ta preseže meje domačega odra?",
       "bio": "Bojan Cvjetićanin je frontman skupine Joker Out in eden vidnejših obrazov svoje generacije na slovenski glasbeni sceni. S svojo karizmo je v nekaj letih presegel domače meje ter ustvaril prepoznavno blagovno znamko, ki jo danes pozna tudi mednarodno občinstvo. Poslušalci iz tujine se zaradi njihove glasbe učijo slovenskih besedil ter tako odkrivajo slovenski jezik in kulturo, na kar je Bojan izjemno ponosen.\n\nLeta 2023 so Joker Out s pesmijo 'Carpe Diem' Slovenijo zastopali na Evroviziji in istega leta razprodali dvorano Stožice. Ob deseti obletnici skupine so na velikem koncertu Karneval privabili več kot 17.000 obiskovalcev in slabemu vremenu navkljub ustvarili magičen večer.\n\nNa Fanfari nas bo Bojan popeljal v svet grajenja osebne blagovne znamke. Spoznali bomo, kako se spopasti s slavo, pričakovanji in nenazadnje prepoznavnostjo, ki prinese večjo odgovornost. Prav slednja je morda najpomembnejši vidik vpliva, ki ga potrebuje Novi Val.",
@@ -121,6 +92,7 @@
     },
     {
       "name": "KATARINA ČAS",
+      "time": "13:30",
       "role": "Mednarodna in slovenska igralka",
       "talk": "Kdaj obraz postane blagovna znamka?",
       "bio": "Katarina Čas je ena najbolj prepoznavnih slovenskih igralk, ki je svojo kariero uspešno razvijala tako doma kot na mednarodnem filmskem prizorišču.\n\nS svojim talentom, karizmo in vsestranskostjo si je odprla vrata v Hollywood, kjer je nastopila v odmevnih produkcijah, kot sta The Wolf of Wall Street ob Leonardu DiCapriu in The Guard z Brendanom Gleesonom in Donom Cheadlom.\n\nNa Fanfari se bo Katarina pridružila Bojanu Cvjetićaninu, s katerim bo raziskovala svet osebne blagovne znamke. Skupaj bosta raziskala izzive, ki jih prinaša prepoznavnost ter kako ostati zvest samemu sebi, ko tvoje ime postane znano širšemu svetu. Saj je najpomembnejše, da tudi v različnih vlogah ostaneš ti.",
@@ -129,7 +101,29 @@
       "c2": "#1A1B1B"
     },
     {
+      "name": "NUŠA LESAR",
+      "time": "13:30",
+      "role": "Voditeljica in novinarka",
+      "talk": "Voditeljica okrogle mize",
+      "bio": "",
+      "portrait": "portraits/Nusa-Lesar.jpg",
+      "host": true,
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "IVICA KOSTELIĆ",
+      "time": "14:00",
+      "role": "Eden najuspešnejših alpskih smučarjev",
+      "talk": "Res vedno zmagaš takrat, ko prvi prečkaš ciljno črto?",
+      "bio": "Ivica Kostelić je eden najuspešnejših hrvaških alpskih smučarjev. V svoji bogati karieri je osvojil številne kolajne in jo nemalokrat, tudi po tekmi, znova ubral po stopničkah navzgor.\n\nOsvojil je štiri srebrne olimpijske medalje ter kar 26 zmag v svetovnem pokalu. Leta 2011 je osvojil veliki kristalni globus. Kljub vrhunski karieri se je soočal tudi z izzivi, ki so od njega zahtevali veliko mero vztrajnosti in samodiscipline.\n\nNa Fanfari bo Ivica pripovedoval o zmagi in porazu. Razmišljal bo o tem, kaj nam pomenita in koliko poguma potrebujemo, da znova poiščemo cilj po porazu in celo po zmagi.",
+      "portrait": "portraits/Ivica-Kostelic.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
       "name": "JAKA REPANŠEK",
+      "time": "14:40",
       "role": "Strokovnjak za medijsko in oglaševalsko pravo, Predsednik Oglaševalskega razsodišča v mandatih 2020-2025",
       "talk": "Kaj se zgodi, ko igra prehiti pravila?",
       "bio": "Mag. Jaka Repanšek je strokovnjak z več kot 20-letnimi izkušnjami na področju tehnologije, medijev, oglaševanja in interneta.\n\nJe ustanovitelj svetovalne družbe RePublis, ki se ukvarja s pravnimi in regulativnimi vprašanji na področju medijev in tehnologije. Šest let je vodil Oglaševalsko razsodišče in usmerjal prenovo Slovenskega oglaševalskega kodeksa. V zadnjih letih se posveča predvsem digitalni regulativi, varstvu zasebnosti ter etičnim izzivom sodobnega oglaševanja.\n\nNa Fanfari bo Jaka predstavil pomen samoregulacije pri zagotavljanju odgovornega in etičnega oglaševanja. Razložil bo, kako nove tehnologije in spreminjajoče se oglaševalske prakse ustvarjajo plodna tla za izzive, ki vzklijejo iz sprememb. Slednji zahtevajo budno oko, ki tudi v najhitrejši igri loči drzno potezo od napačne.",
@@ -138,7 +132,28 @@
       "c2": "#1A1B1B"
     },
     {
+      "name": "TEODORA JEREMIĆ",
+      "time": "15:05",
+      "role": "Editorial Director at Vogue Adria",
+      "talk": "Kako pri življenju ohraniti print v svetu, kjer digital narekuje pravila igre?",
+      "bio": "V časih neskončnega scrollanja in vsebin, ki so na zaslonu le nekaj sekund, se lahko hitro zdi, da za print ni več prostora. A kljub napovedim o njegovem koncu se tiskane publikacije vračajo kot zbirateljski kos in predmet z vsebino.\n\nTeodora Jeremič je urednica, pisateljica in kuratorka iz Beograda, ki svoje delo gradi na presečišču sodobne umetnosti, mode in založništva. Sodelovala je s številnimi publikacijami in revijami, delovala kot vodja galerije in umetniška producentka pri Hestia Art Residency Exhibitions Bureau ter v Muzeju sodobne umetnosti v Beogradu. Danes je Editorial Director revije Vogue Adria, za katero tudi piše.\n\nNa Fanfari bo Teodora odprla vprašanje, zakaj print kljub vzponu digitalnih medijev še vedno ostaja relevanten. Govorila bo o tem, kaj ljudje iščejo v fizičnih publikacijah, zakaj prinašajo občutek teže trenutka ter zakaj printu za preživetje ni treba tekmovati z digitalnim svetom. Morda njegova prihodnost ni v tem, da postane hitrejši, temveč v tem, da ostane drugačen.",
+      "portrait": "portraits/Teodora-Jeremic.jpg",
+      "c1": "#176A78",
+      "c2": "#1A1B1B"
+    },
+    {
+      "name": "CORNELIUS WALKER",
+      "time": "15:30",
+      "role": "Režiser nominiran za oskarja",
+      "talk": "Kaj se zgodi, ko se prepustimo lepoti nevednosti?",
+      "bio": "Cornelius Walker je z oskarjem nominirani ustvarjalec, ki deluje na področju filma in televizijske produkcije. Njegova dela zaznamujeta čustveno prizemljeno pripovedovanje ter filmska ambicija.\n\nNominacijo za oskarja je prejel za film Black Sheep, ki je bil nominiran tudi za nagradi Grierson in IDA. Režiral je BFI financirani film Talk, sodeloval pri serijah Supacell in The Fear Index ter pri produkcijah Bridgerton in The Witcher.\n\nNa Fanfari bo Cornelius govoril o svojem pogledu na pripovedovanje zgodb, ki si ga je ustvaril ob delovanju na mnogih narativnih projektih. Odprl bo razmislek o tem, ali je nevednost lahko prednost pri pripovedovanju, saj ravno v neznanem odkrijemo tisto, česar sicer ne bi našli nikoli.",
+      "portrait": "portraits/Cornelius-Walker.jpg",
+      "c1": "#DE9000",
+      "c2": "#C62000"
+    },
+    {
       "name": "SANELA PERESCIUTTI",
+      "time": "16:00",
       "role": "Zdravnica, predavateljica in terapevtka",
       "talk": "Kaj se zgodi, ko v ospredje postavimo čustva, možgane in vse tisto, o čemer se premalokrat pogovarjamo?",
       "bio": "Kako dobro zares poznamo svoje potrebe, razumemo svoja čustva in gradimo odnose z ljudmi okoli sebe? To so vprašanja, ki jih bo na svojem predavanju odprla Sanela Peresciutti (ex. Banović). Že vrsto let navdušujejo emocionalni možgani in povezava med telesnim ter duševnim zdravjem.\n\nOd leta 2011 je zaposlena na Kliničnem oddelku za gastroenterologijo UKC Ljubljana, svoje znanje pa redno nadgrajuje na področju psihologije in psihoterapije. Dodatno se je izobraževala tudi v ZDA, Nemčiji in Švici. Je avtorica knjige Spodbude in je sodelovala v več kot 20 intervjujih o emocionalnem zdravju.\n\nV svojem predavanju bo na sproščen in spodbuden način predstavila pomen psihološkega zdravja v vsakdanjem življenju. Skozi prispodobo hiše zdravja bo spregovorila o njenih temeljih in stebrih, pomenu zaupanja ter o tem, kako lahko bolje prisluhnemo svojemu telesu, spodbudimo optimizem in negujemo kakovostne odnose. Poseben poudarek bo namenila tudi emocionalnim možganom ter povezavi med našim počutjem in načinom, kako se povezujemo z drugimi.",
@@ -147,13 +162,14 @@
       "c2": "#1A1B1B"
     },
     {
-      "name": "LUKA BIJELIĆ",
-      "role": "Specialist za kibernetske varnostne rešitve",
-      "talk": "Vaša največja varnostna luknja je verjetno v vašem žepu.\n\nDemonstracija v živo: kako napadalci zlorabijo mobilne naprave in kako jih ustaviti v realnem času.",
-      "bio": "Pametni telefon je postal naše nepogrešljivo delovno orodje, hkrati pa tudi ena od privlačnejših tarč za kibernetske napadalce. Kako hitro lahko na videz nedolžna aplikacija ali sporočilo ogrozi naše podatke?\n\nLuka Bijelić, specialist za kibernetske varnostne rešitve pri Telekomu Slovenije, bo skozi demonstracijo v živo razkril, kako napadalci izkoriščajo ranljivosti mobilnih naprav in kako lahko pridobijo dostop do poslovnih podatkov. Z dolgoletnimi izkušnjami v IKT-sektorju sodeluje pri projektih kibernetske zaščite državnih institucij in kritične infrastrukture, posebno pozornost pa namenja zaščiti in upravljanju mobilnih naprav.\n\nNa predavanju bomo spoznali najpogostejše mobilne grožnje, spremljali prikaz prevzema naprave v varnem testnem okolju ter izvedeli, kako lahko sodobne varnostne rešitve napade zaznajo in ustavijo v realnem času.\n\nPripravi se na drugačen pogled na napravo, ki jo vsak dan nosiš v žepu. Morda je čas, da preveriš, ali ji zaupaš preveč.",
-      "portrait": "portraits/Luka-Bijelic.jpg",
-      "c1": "#176A78",
-      "c2": "#1A1B1B"
+      "name": "VESNA PONORAC",
+      "role": "Voditeljica in igralka",
+      "talk": "Voditeljica Fanfare",
+      "bio": "",
+      "portrait": "portraits/Vesna-Ponorac.jpg",
+      "host": true,
+      "c1": "#DE9000",
+      "c2": "#C62000"
     }
   ]
 }
